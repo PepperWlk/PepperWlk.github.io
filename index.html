@@ -380,7 +380,7 @@
             sections: [
                 {
                     title: 'Le challenge',
-                    text: 'GameJam organisée par mon école sur le thème : "One Last Game". Notre équipe a proposé un jeu en 3D avec plusieurs systèmes permettant un jeu toujours différents dans le gameplay avec une condition de victoire à la mort du boss."
+                    text: 'GameJam organisée par mon école sur le thème : "One Last Game". Notre équipe a proposé un jeu en 3D avec plusieurs systèmes permettant un jeu toujours différents dans le gameplay avec une condition de victoire à la mort du boss.'
                 },
                 {
                     title: 'Systèmes développés',
@@ -388,10 +388,10 @@
                 },
                 {
                     title: 'Bilan',
-                    text: '40 heures assomantes de fatigue et très formatrices. Créer ce jeu était très formateur, ayant fait un scope énorme dès le début, nous avons dû nous mettre à 100% pendant 40h afin de rendre un jeu propre et agréable que ça soit pour nous que pour les joueurs.'
+                    text: '40 heures assomantes de fatigue et très formatrices. Créer ce jeu était très formateur, ayant fait un scope énorme dès le début, nous avons dû nous mettre à 100% pendant 40h afin de rendre un jeu propre et agréable que ça soit pour nous que pour les joueurs. <br/>Pour voir la vidéo du gameplay : <a href="https://www.canva.com/design/DAHEGFxgIUs/wKPJuhwuim8iDONWBzF8vw/edit?utm_content=DAHEGFxgIUs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" style="color:var(--accent);text-decoration:underline;">cliquez ici</a>'
                 }
-            ],
-            images: ['images/LC1.png', 'images/LCPlayer.png', 'images/LC2.png', 'images/EnemyLC.png', 'images/LC3.png'],
+            ],  
+            images: ['images/LC1.png', 'images/LCPlayer.png', 'images/LC2.png', 'images/LCEnemy.png', 'images/LC3.png'],
         },
     ];
 
@@ -477,7 +477,7 @@
         showPage(previousPage);
     });
 
-    function showPage(pageId) {
+    window.showPage = function (pageId) {
         document.getElementById('project-detail').classList.remove('active');
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
