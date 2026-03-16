@@ -9,10 +9,6 @@
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════════════
-     BARRE DE NAVIGATION (en haut, toujours visible)
-     Pour renommer un onglet : modifie le texte entre <a> et </a>
-     ══════════════════════════════════════════════════════ -->
 <nav>
   <div class="nav-logo" onclick="showPage('home')">Léo Guillemart</div>
   <ul class="nav-links">
@@ -24,10 +20,6 @@
 </nav>
 
 
-<!-- ══════════════════════════════════════════════════════
-     PAGE : HOME
-     Modifie le titre, le sous-titre et le texte du bouton
-     ══════════════════════════════════════════════════════ -->
 <section id="home" class="page active">
   <div class="home-noise"></div>
   <div class="home-inner">
@@ -47,12 +39,6 @@
 </section>
 
 
-<!-- ══════════════════════════════════════════════════════
-     PAGE : CV
-     Le PDF est embarqué directement dans la page.
-     Pour le remplacer : ouvre cv.js et change la variable PDF_BASE64
-     (ou demande à Claude de réimporter un nouveau PDF)
-     ══════════════════════════════════════════════════════ -->
 <section id="cv" class="page">
   <div class="page-header">
     <p class="label">// Curriculum Vitæ</p>
@@ -73,10 +59,6 @@
 </section>
 
 
-<!-- ══════════════════════════════════════════════════════
-     PAGE : PROJETS ÉCOLE
-     Les projets sont définis dans projets.js
-     ══════════════════════════════════════════════════════ -->
 <section id="school" class="page">
   <div class="page-header">
     <p class="label">// Travaux académiques</p>
@@ -85,11 +67,6 @@
   <div class="projects-grid" id="school-grid"></div>
 </section>
 
-
-<!-- ══════════════════════════════════════════════════════
-     PAGE : PROJETS PERSO & EXPÉRIENCES
-     Les projets sont définis dans projets.js
-     ══════════════════════════════════════════════════════ -->
 <section id="perso" class="page">
   <div class="page-header">
     <p class="label">// Initiatives personnelles</p>
@@ -99,10 +76,6 @@
 </section>
 
 
-<!-- ══════════════════════════════════════════════════════
-     PAGE DÉTAIL D'UN PROJET (s'ouvre quand on clique une carte)
-     Le contenu est injecté dynamiquement par main.js
-     ══════════════════════════════════════════════════════ -->
 <div id="project-detail">
   <button class="detail-back" id="detail-back-btn">← Retour</button>
   <div class="detail-hero">
@@ -122,30 +95,6 @@
 
 
 <script>
-    // =====================================================================
-    //  PROJETS.JS —
-    //
-    //    id       → un identifiant unique (pas d'espaces)
-    //    title    → le titre affiché sur la carte et en page détail
-    //    tag      → la petite étiquette (ex: "Projet École · Unity")
-    //    emoji    → utilisé comme fond si tu n'as pas d'image
-    //    bgColor  → couleur de fond si pas d'image (code hexadécimal)
-    //    image    → (OPTIONNEL) chemin vers ton image de carte
-    //               ex: "images/mon-projet.jpg"
-    //               → place tes images dans un dossier "images/" à côté de index.html
-    //               → si absent, l'emoji + bgColor sera affiché à la place
-    //    desc     → courte description affichée au survol de la carte
-    //    duration → durée du projet
-    //    team     → taille de l'équipe
-    //    stack    → technologies utilisées
-    //    sections → les blocs de texte dans la page détail
-    //               chaque section a un "title" et soit "text" soit "items" (liste)
-    //    images   → (OPTIONNEL) tableau de chemins pour la page détail
-    //               ex: ["images/projet-screen1.jpg", "images/projet-screen2.jpg"]
-    // =====================================================================
-
-
-    // ── PROJETS D'ÉCOLE ──────────────────────────────────────────────────
     const schoolProjects = [
         {
             id: 's1',
@@ -337,7 +286,6 @@
     ];
 
 
-    // ── PROJETS PERSO & EXPÉRIENCES ───────────────────────────────────────
     const persoProjects = [
         {
             id: 'p1',
@@ -422,18 +370,10 @@
     ];
 
 
-    // =====================================================================
-    //  MAIN.JS — Logique du site (navigation, rendu des cartes, page détail)
-    //  Tu n'as normalement pas besoin de toucher à ce fichier.
-    // =====================================================================
-
-
-    // ── RENDU DES CARTES PROJET ──────────────────────────────────────────
     function renderCard(project, category) {
         const card = document.createElement('div');
         card.className = 'project-card';
 
-        // Fond : image si disponible, sinon emoji + couleur
         const bgHTML = project.image
             ? `<img class="project-card-img" src="${project.image}" alt="${project.title}" />`
             : `<div class="project-card-placeholder" style="background:${project.bgColor}">${project.emoji}</div>`;
@@ -451,12 +391,10 @@
         return card;
     }
 
-    // Peuple les deux grilles au chargement de la page
     document.getElementById('school-grid').append(...schoolProjects.map(p => renderCard(p, 'school')));
     document.getElementById('perso-grid').append(...persoProjects.map(p => renderCard(p, 'perso')));
 
 
-    // ── PAGE DÉTAIL D'UN PROJET ──────────────────────────────────────────
     let previousPage = 'school';
 
     function openDetail(project, fromPage) {
@@ -465,13 +403,11 @@
         document.getElementById('detail-tag').textContent = project.tag;
         document.getElementById('detail-title').textContent = project.title;
 
-        // Hero : image si dispo, sinon emoji + couleur
         const heroBgContent = project.image
             ? `<img src="${project.image}" alt="${project.title}" style="width:100%;height:100%;object-fit:cover" />`
             : `<div style="width:100%;height:100%;background:${project.bgColor};display:flex;align-items:center;justify-content:center;font-size:12rem;filter:blur(2px);transform:scale(1.05)">${project.emoji}</div>`;
         document.getElementById('detail-hero-bg').innerHTML = heroBgContent;
 
-        // Métadonnées
         document.getElementById('detail-meta').innerHTML = `
     <div class="detail-meta-item"><div class="key">Durée</div><div class="val">${project.duration}</div></div>
     <div class="detail-meta-item"><div class="key">Équipe</div><div class="val">${project.team}</div></div>
@@ -479,7 +415,6 @@
     <div class="detail-meta-item"><div class="key">Catégorie</div><div class="val">${fromPage === 'school' ? 'École' : 'Personnel'}</div></div>
   `;
 
-        // Sections texte
         const content = document.getElementById('detail-content');
         content.innerHTML = '';
         project.sections.forEach(sec => {
@@ -492,9 +427,6 @@
             content.appendChild(div);
         });
 
-        // Images page détail
-        // → Si le projet a un tableau "images" dans projets.js, on les affiche
-        // → Sinon on affiche des placeholders grisés
         const imagesDiv = document.createElement('div');
         imagesDiv.className = 'detail-images';
         if (project.images && project.images.length > 0) {
@@ -519,8 +451,6 @@
         showPage(previousPage);
     });
 
-
-    // ── NAVIGATION ───────────────────────────────────────────────────────
     function showPage(pageId) {
         document.getElementById('project-detail').classList.remove('active');
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
