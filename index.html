@@ -110,15 +110,20 @@
             sections: [
                 {
                     title: 'Contexte & Objectifs',
-                    text: 'Dans le cadre du cours de découverte de C# sur Unity, nous avons mis en place une simulation de boids qui respecte les trois principes de bases Separation, Alignement, Cohesion'
+                    text: "Dans le cadre d'un cours d'introduction à C# sur Unity, ce projet avait pour objectif de concevoir et implémenter une simulation de comportement d'agents autonomes — le modèle de Boids, développé par Craig Reynolds en 1986 pour reproduire les mouvements collectifs observés dans la nature (vols d'étourneaux, bancs de poissons). La simulation respecte les trois règles fondamentales : la Séparation (éviter les collisions entre agents), l'Alignement (s'orienter dans la direction du groupe) et la Cohésion (se rapprocher du centre de masse local), afin d'obtenir un comportement collectif fluide et organique."
                 },
                 {
                     title: 'Moyens mis en place',
-                    items: ['Documentation sur les règles des Boids', 'Analyse des règles mathématiques impliqués', '3D']
+                    items: [
+                        "Étude de la documentation et des références techniques sur le modèle de Boids",
+                        "Analyse et implémentation des règles mathématiques : calcul de vecteurs de force, pondération des comportements et gestion des voisinages par rayon de perception",
+                        "Simulation en environnement 3D sous Unity, avec gestion des déplacements via le système de transforms",
+                        "Développement d'un système de paramètres ajustables en temps réel depuis l'inspecteur Unity"
+                    ]
                 },
                 {
                     title: 'Contraintes & difficultés',
-                    text: "Créer une interface utilisable directement dans l'éditeur proprement tout en restant modulable durant la simulation, Créer des rôles différents au sein des Boids pour améliorer le rendu final et les différents comportements possibles"
+                    text: "Concevoir une interface propre et ergonomique directement dans l'éditeur Unity, permettant de modifier les paramètres de la simulation en cours d'exécution sans interrompre la scène. En parallèle, l'implémentation d'un système de rôles distincts au sein des Boids (leader, suiveur, comportements spécifiques) a introduit une hiérarchie comportementale enrichissant les dynamiques de groupe et la diversité visuelle de la simulation."
                 }
             ],
             images: ['images/InterfaceBoids.png', 'images/PreviewBoids.png']
@@ -373,6 +378,7 @@
             tag: 'Expérience · Compétition',
             emoji: '🏆',
             bgColor: '#1a100a',
+            image: 'images/IconeLC.png',
             desc: 'Thème : One Last Game',
             duration: '48 heures',
             team: '3 personnes (du côté dev)',
